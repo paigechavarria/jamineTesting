@@ -31,7 +31,7 @@ window.addEventListener('DOMContentLoaded', function() {
     let nums = Object.values(values);
     let topFrac = (nums[0] * 1) + ((nums[0] * nums[1]) * nums[2]) //calculating the total amount of loan with interest
     let bottomFrac = nums[2]; //calculating yearly total
-    let monthlyPayment = ((topFrac / bottomFrac) / 12).toFixed(2); //diving the yearly total by 12 to get monthly total
+    let monthlyPayment = ((topFrac / bottomFrac) / 12); //diving the yearly total by 12 to get monthly total
     return updateMonthly(monthlyPayment);
   }
   
@@ -40,7 +40,8 @@ window.addEventListener('DOMContentLoaded', function() {
   function updateMonthly(monthly) {
     let monthUI = document.querySelector('#monthly-payment');
     let newUpdate = document.createElement('div') //created the div so that the new amounts wouldn't be inline and merge together 
-    newUpdate.append(monthly);
+    newUpdate.append(monthly.toFixed(2));
     monthUI.append(newUpdate);
     monthUI = '';
+    return newUpdate.innerHTML;
   }
